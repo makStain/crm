@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="~{link}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div th:insert="~{navbar}"></div>
+    <br>
+    <div layout:fragment="content">
+        <div class="container" style="width: 95%; margin: auto; margin-top: 2%;">
+            <form th:action="@{'/addReq'}" method="post">
+                <input type="hidden" name="id">
+                <div class="mb-3">
+                    <label for="name" class="form-label">ФИО : </label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="ФИО..." required>
+                </div>
+                <div class="mb-3">
+                    <label for="course" class="form-label">Курс : </label>
+                    <select class="form-control" id="course" name="course">
+                        <option label="Выберите курс"  selected disabled value="">Выберите курс</option>
+                        <option></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Телефон :</label>
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="+7(7__)_______" required>
+                </div>
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Комментарии :</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Комментарии..." required></textarea>
+                </div>
+                <button type="submit" class="btn text-light" style="background-color: #0a7361">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

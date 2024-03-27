@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:insert="~{link}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div th:insert="~{navbar}"></div>
+    <br>
+    <div layout:fragment="content" class="row ml-3">
+        <div class="card col-sm-6" style="width: 33rem;" th:each="request:${requests}">
+            <div class="card-body">
+                <span>
+                    <h5 class="card-title" style="color: red" th:if="${request.isHandled() == true}">Новая Заявка</h5>
+                    <h5 class="card-title">Заявка от <b th:text="${request.getUserName()}"></b></h5>
+                </span>
+
+                Курс: <span class="card-text" th:text="${request.getCourseName()}"></span>
+                <p class="card-text" th:text="${request.getCommentary()}"></p>
+                <b>Тел: <span class="card-text" th:text="${request.getPhone()}"></span></b>
+                <span><a th:href="@{'/details/' + ${request.getId()}}" class="card-link" style="text-decoration: none">Подробнее</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
